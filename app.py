@@ -83,8 +83,6 @@ def start():
         # storing it in the pandas datframe
     if os.path.exists('glove_vectors') == False:
         execute ('gdown --id  1lDca_ge-GYO0iQ6_XDLWePQFMdAA2b8f')
-    df1 = pd.read_csv('preprocessed_data.csv')
-    return df1
 
 
 def preprocess(string):
@@ -243,7 +241,7 @@ def create_average_tfidf_w2v(preprocessed_title,tfidf_words,dictionary,glove_wor
 
 @app.route('/result', methods=['POST'])
 def app_name():
-    df1 = start()
+    df1 = pd.read_csv('preprocessed_data.csv')
     # TO DO remove this when things get complete
     print ("enter a input")
     output = request.form.to_dict()
@@ -259,4 +257,5 @@ def app_name():
     return flask.render_template('result.html',ans=list(ans['question'].values))
 
 if __name__ == '__main__':
+    start()
     app.run(host='0.0.0.0', port=8080, debug=True)
