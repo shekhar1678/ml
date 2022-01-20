@@ -83,7 +83,7 @@ def start():
         # storing it in the pandas datframe
     if os.path.exists('glove_vectors') == False:
         execute ('gdown --id  1lDca_ge-GYO0iQ6_XDLWePQFMdAA2b8f')
-    
+    df1 = pd.read_csv('preprocessed_data.csv')
     return df1
 
 
