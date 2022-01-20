@@ -17,9 +17,9 @@ import nltk
 from sklearn.feature_extraction.text import TfidfVectorizer
 from flask import Flask, request , jsonify
 import flask
-app_name = Flask(__name__)
+app = Flask(__name__)
 
-@app_name.route('/')
+@app.route('/')
 def index():
     return flask.render_template('index.html')
 
@@ -242,8 +242,8 @@ def create_average_tfidf_w2v(preprocessed_title,tfidf_words,dictionary,glove_wor
   print("len of individual vector=",len(tfidf_w2v_vectors[0]))
   return tfidf_w2v_vectors
 
-@app_name.route('/result', methods=['POST'])
-def app():
+@app.route('/result', methods=['POST'])
+def app_name():
     df1 = start()
     # TO DO remove this when things get complete
     print ("enter a input")
@@ -260,4 +260,4 @@ def app():
     return flask.render_template('result.html',ans=list(ans['question'].values))
 
 if __name__ == '__main__':
-    app_name.run(host='0.0.0.0', port=8080, debug=True)
+    app.run(host='0.0.0.0', port=8080, debug=True)
