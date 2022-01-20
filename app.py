@@ -259,4 +259,4 @@ def app_name():
     return flask.render_template('result.html',ans=list(ans['question'].values))
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080, debug=True)
+    app.run(host='0.0.0.0', port=8080, debug=True,template_folder='Templates')
